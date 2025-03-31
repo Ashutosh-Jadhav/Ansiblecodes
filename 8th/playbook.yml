@@ -13,9 +13,18 @@
   tasks: 
   - name: Create destination directory for configuration file
     file:
-      path: /home/ashutosh/IIITB/Ansible/8th/configurations
+      path: /home/ashutosh/IIITB/DevOps/Ansible/8th/configurations
       state: directory
 
   - name: Create a configuration file using template
-    src: template/config.j2
-    des:
+    template:
+      src: template/config.j2
+      dest: /home/ashutosh/IIITB/DevOps/Ansible/8th/configurations/app_config.yml
+
+  - name: Display the generated config file
+    command: cat /home/ashutosh/IIITB/DevOps/Ansible/8th/configurations/app_config.yml
+    register: output
+
+  - name: Print the configuration details
+    debug:
+      msg: "{{ output.stdout }}"

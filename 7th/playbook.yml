@@ -1,4 +1,3 @@
----
 - name: Example Playbook with Different Variable Data Types
   hosts: localhost
   vars:
@@ -6,29 +5,29 @@
     string_var: "Hello, Ansible!"
 
     # Numerical Variable
-    num_var: 42
+    num_var: 56
 
     # List Variable
     list_var:
       - item1
+      - 12
       - item2
-      - item3
 
-    # Dictionary Variable
+    # dictonary variable
     dict_var:
       key1: value1
       key2: value2
       key3: value3
 
-    # Boolean Variable
+    # boolean variable
     bool_var: true
-
+  
   tasks:
     - name: Display Variables
       debug:
         msg:
           - "String Variable: {{ string_var }}"
-          - "Numerical Variable: {{ num_var }}"
-          - "List Variable: {{ list_var }}"
-          - "Dictionary Variable: {{ dict_var }}"
-          - "Boolean Variable: {{ bool_var }}"
+          - "NUmeric Variable: {{ num_var }}"
+          - "list: {{ list_var }}"
+          - "dictonary: {{ dict_var }}"
+          - "boolean: {{ bool_var }}"

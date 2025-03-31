@@ -1,0 +1,37 @@
+- name: playbook to create different linux files
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Ensure that /home/ashutosh/IIITB/DevOps/Ansible/5th/temp directory exist
+      file:
+        path: /home/ashutosh/IIITB/DevOps/Ansible/5th/temp
+        state: directory
+
+    - name: create a regular file
+      file: 
+        path: /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/reg_file
+        state: touch
+
+    - name: create a directory name dir1
+      file: 
+        path: /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/dir1
+        state: directory
+
+    - name: create a character device
+      command: mknod /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/char_device c 1 5
+
+    - name : create a block device
+      command: mknod /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/block_device b 8 0
+
+    - name: create a sybolic link
+      file:
+        src: /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/reg_file
+        dest: /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/symlink
+        state: link
+
+    - name: create hard link
+      command: ln /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/reg_file /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/hardlink
+
+    - name: create a fifo
+      command: mkfifo /home/ashutosh/IIITB/DevOps/Ansible/5th/temp/myfifo
+
